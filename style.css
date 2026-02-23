@@ -1,0 +1,1028 @@
+/* ======== GLOBAL STYLES ======== */
+:root {
+    --primary-color: #008000;   /* Your Green Accent */
+    --primary-dark: #006400;    /* Darker Green for Hovers */
+    --dark-text: #333333;       /* Main text */
+    --body-text: #555555;       /* Lighter body text */
+    --light-gray: #f7f9fa;      /* Page background */
+    --white: #ffffff;
+    --border-color: #eeeeee;
+    --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
+    --shadow-hover: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Subtle side gradient */
+    background: linear-gradient(90deg, #eef2f3 0%, #f7f9fa 15%, #f7f9fa 85%, #eef2f3 100%);
+    color: var(--body-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+/* --- Section Headings --- */
+h2 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* ======== STICKY HEADER & NAVIGATION ======== */
+header {
+    background-color: var(--white);
+    padding: 15px 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header-logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.logo-container h1 {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: var(--dark-text);
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #e8f5e9;
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+nav a.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2);
+}
+
+
+/* ======== UPDATED HERO SECTION (WITH SLIDESHOW) ======== */
+.hero {
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden; /* Crucial for absolute positioned images */
+    margin-bottom: 50px;
+    background-color: #000; /* Fallback black while loading */
+}
+
+/* The individual sliding images */
+.banner-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 0;
+    filter: brightness(45%); /* Replaces the dark gradient overlay for text readability */
+}
+
+/* State when image is fully visible in front */
+.banner-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Keeps the old image visible behind the new one to prevent the dark flash */
+.banner-slide.previous {
+    opacity: 1;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10; /* Ensures text stays above sliding images */
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero h2 {
+    font-size: 3.5em;
+    margin-top: 0;
+    color: var(--white);
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards 0.2s;
+}
+
+.hero h2::after { display: none; }
+
+.hero p {
+    font-size: 1.6em;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards 0.5s;
+}
+
+.hero .cta-button {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards 0.8s;
+}
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ======== COURSE HERO ======== */
+.course-hero {
+    position: relative;
+    padding: 100px 40px;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 50px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.course-hero h1 {
+    font-size: 3em;
+    color: var(--white);
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards 0.2s;
+}
+.course-hero h1::after { display: none; }
+
+
+/* ======== BUTTONS ======== */
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: inline-block;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 128, 0, 0.3);
+}
+
+.cta-button:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 128, 0, 0.4);
+}
+
+
+/* ======== MAIN CONTENT & SECTIONS ======== */
+main {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* Highlights Bar Overlaying Hero */
+.highlights-bar {
+    background-color: var(--white);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+    margin-top: -60px; 
+    position: relative;
+    z-index: 20; /* High z-index to stay above slideshow */
+    margin-bottom: 60px;
+    transition: transform 0.3s ease;
+}
+
+.highlights-bar:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: var(--dark-text);
+}
+
+.highlight-item svg {
+    width: 32px;
+    height: 32px;
+    color: var(--primary-color);
+}
+
+.content-section {
+    background-color: var(--white);
+    padding: 60px;
+    margin-bottom: 50px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+}
+
+/* About Section 2-Column Layout */
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease;
+}
+
+/* ======== LEADERSHIP SECTION ======== */
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.leader-card {
+    background-color: var(--white);
+    padding: 35px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.leader-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-hover);
+}
+
+.leader-avatar {
+    width: 90px;
+    height: 90px;
+    background-color: #e8f5e9;
+    color: var(--primary-color);
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leader-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.leader-role {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.leader-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.2s;
+}
+
+.leader-contact:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+
+/* ======== ADMISSIONS PAGE DATES TABLE ======== */
+.dates-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 30px;
+    background-color: var(--white);
+    box-shadow: var(--shadow-soft);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.dates-table th {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 20px;
+    text-align: left;
+}
+
+.dates-table td {
+    padding: 18px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+
+/* ======== CHAT WIDGET STYLES ======== */
+#chat-bubble { position: fixed; bottom: 30px; right: 30px; background-color: var(--primary-color); color: var(--white); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(0, 128, 0, 0.4); z-index: 100; transition: transform 0.3s; }
+#chat-bubble:hover { transform: scale(1.1); }
+
+#chat-window { position: fixed; bottom: 100px; right: 30px; width: 380px; max-width: 90%; background-color: var(--white); border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); overflow: hidden; display: flex; flex-direction: column; z-index: 99; opacity: 0; transform: translateY(20px); visibility: hidden; transition: all 0.4s; }
+#chat-window.visible { opacity: 1; transform: translateY(0); visibility: visible; }
+
+.chat-header { background-color: var(--primary-color); color: var(--white); padding: 18px 20px; display: flex; align-items: center; gap: 15px; }
+.chat-avatar { width: 42px; height: 42px; border-radius: 50%; background-color: var(--white); background-image: url('MCET buddy.png'); background-size: cover; border: 2px solid white; }
+#chat-body { height: 380px; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: #f9f9f9; }
+
+.chat-message { padding: 12px 16px; border-radius: 18px; max-width: 80%; font-size: 14px; }
+.chat-message.bot { background-color: var(--white); border-bottom-left-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.chat-message.user { background-color: var(--primary-color); color: var(--white); border-bottom-right-radius: 2px; align-self: flex-end; }
+
+.chat-footer { display: flex; padding: 15px; border-top: 1px solid #eee; }
+#chat-input { flex-grow: 1; border: 1px solid #ddd; border-radius: 25px; padding: 10px 15px; outline: none; }
+#send-btn { background-color: var(--primary-color); border: none; border-radius: 50%; width: 40px; height: 40px; margin-left: 10px; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; }
+
+
+/* ======== FOOTER ======== */
+footer { text-align: center; padding: 60px 20px; background-color: #1a1a1a; color: #bbb; margin-top: 60px; }
+footer strong { color: var(--white); }
+
+
+/* ======== MOBILE ======== */
+@media (max-width: 768px) {
+    .about-section { grid-template-columns: 1fr; }
+    .hero { height: 500px; }
+    .hero h2 { font-size: 2.5em; }
+    header { padding: 15px 20px; flex-direction: column; gap: 10px; }
+    .highlights-bar { margin-top: 0; }
+}
+
+/* =========================================================
+   UI FIXES FOR ICONS AND CHATBOT BUTTONS 
+   ========================================================= */
+
+/* Fix 1: Shrink the giant phone and avatar icons in Administration */
+.leader-contact svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.leader-avatar svg {
+    width: 45px;
+    height: 45px;
+}
+
+/* Fix 2: Restore the pill-shape design to Chatbot Quick Options */
+.quick-options { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+    padding: 12px 20px; 
+    background-color: #f9f9f9; 
+    border-top: 1px solid #eee; 
+}
+
+.quick-options button { 
+    background-color: var(--white); 
+    border: 1px solid var(--primary-color); 
+    color: var(--primary-color); 
+    padding: 6px 14px; 
+    border-radius: 20px; 
+    font-size: 12px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: all 0.2s; 
+}
+
+.quick-options button:hover { 
+    background-color: var(--primary-color); 
+    color: var(--white); 
+    transform: translateY(-2px); 
+    box-shadow: 0 2px 5px rgba(0,128,0,0.2); 
+}
+
+/* Fix 3: Size the Send button arrow and Close 'X' correctly */
+#send-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+#close-chat { 
+    background: none; 
+    border: none; 
+    color: var(--white); 
+    font-size: 24px; 
+    cursor: pointer; 
+    opacity: 0.8; 
+    margin-left: auto; 
+    transition: opacity 0.2s; 
+    line-height: 1;
+}
+
+#close-chat:hover { 
+    opacity: 1; 
+}
+
+/* =========================================================
+   RESTORED ACADEMICS & GALLERY STYLES 
+   ========================================================= */
+
+/* ======== CARD LAYOUT (Academics Page) ======== */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 35px;
+    margin-top: 40px;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-soft);
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--dark-text);
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.card p {
+    flex-grow: 1; 
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    background-color: #f0fdf4;
+    padding: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid var(--primary-color);
+    padding: 10px 25px;
+    border-radius: 30px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    font-size: 0.95em;
+}
+
+.card-link:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 128, 0, 0.2);
+}
+
+/* ======== GALLERY PAGE STYLES ======== */
+#gallery-page h3 {
+    font-size: 1.8em;
+    color: var(--dark-text);
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+#gallery-page h2 {
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#gallery-page > p {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    color: #666;
+    font-size: 1.1em;
+}
+
+.gallery-category {
+    margin-bottom: 60px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid var(--border-color);
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+/* ======== LIGHTBOX/MODAL STYLES (For clicking images) ======== */
+#lightbox-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+#lightbox-image { max-width: 90%; max-height: 90vh; border-radius: 8px; box-shadow: 0 0 50px rgba(0,0,0,0.5); animation: zoomIn 0.3s ease; }
+#lightbox-close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; font-weight: bold; transition: 0.3s; cursor: pointer; line-height: 1; }
+#lightbox-close:hover { color: var(--primary-color); transform: rotate(90deg); }
+@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* =========================================================
+   COURSE TEMPLATE STYLES (Fix for CSE, Civil, MBA, etc.)
+   ========================================================= */
+
+.course-content-container {
+    max-width: 1300px;
+    margin: 50px auto;
+    padding: 0 30px;
+}
+
+/* Creates the 2-column layout (Text on left, Sidebar on right) */
+.course-about {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+/* Sidebar Information Boxes */
+.key-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.key-info-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    background-color: var(--white);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s;
+}
+
+.key-info-list li:hover {
+    transform: translateX(5px);
+}
+
+/* THIS FIXES THE GIANT ICONS! Limits them to 24px */
+.key-info-list li svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+/* Styles the Subjects/Curriculum into nice pill-shapes */
+.curriculum-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.curriculum-list li {
+    background-color: #e6f3e6;
+    color: #006400;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: background-color 0.3s;
+}
+
+.curriculum-list li:hover {
+    background-color: #c8e6c9;
+}
+
+/* =========================================================
+   COURSE TEMPLATE: LABS & IMAGES FIX
+   ========================================================= */
+
+.labs-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.labs-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+/* This is the magic rule that stops the image from exploding */
+.labs-gallery img,
+.course-about img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Optional Call to Action section at the bottom of courses */
+.cta-section {
+    background-color: var(--white);
+    text-align: center;
+    padding: 70px;
+    border-radius: 12px;
+    margin-top: 60px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+}
+
+/* =========================================================
+   ADMISSIONS PAGE STYLES RESTORED
+   ========================================================= */
+
+/* The container for the steps */
+.process-steps {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+    display: grid;
+    gap: 25px;
+}
+
+/* The individual step box */
+.step {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.step:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+/* The beautiful green circular number */
+.step-number {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.8em;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(0, 128, 0, 0.4);
+}
+
+/* The text inside the step */
+.step-text h3 {
+    margin: 0 0 5px 0;
+    color: var(--primary-dark);
+    font-size: 1.4em;
+}
+
+.step-text p {
+    margin: 0;
+    font-size: 1.05em;
+    color: #555;
+}
+
+/* Eligibility Boxes Section */
+.eligibility-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+.eligibility-box {
+    background: var(--white);
+    padding: 35px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.eligibility-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.eligibility-box h3 {
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    color: var(--dark-text);
+    font-size: 1.5em;
+}
+
+.eligibility-box h3::after { display: none; }
+
+.eligibility-box ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.eligibility-box li {
+    margin-bottom: 12px;
+    font-size: 1.05em;
+}
+
+/* =========================================================
+   CHATBOT INTERNAL UI RESTORED
+   ========================================================= */
+
+/* 1. Fix the Header Spacing */
+.chat-header-text h3 { 
+    margin: 0; 
+    color: var(--white); 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 1.1em; 
+    margin-bottom: 2px; 
+}
+
+.chat-header-text p { 
+    margin: 2px 0 0; 
+    font-size: 0.8em; 
+    color: rgba(255,255,255,0.9); 
+}
+
+/* 2. Fix the Message Rows (Puts Avatar next to Text) */
+.message-row { 
+    display: flex; 
+    align-items: flex-end; 
+    gap: 10px; 
+    animation: fadeIn 0.3s ease; 
+    margin-bottom: 5px;
+}
+
+.message-row.user { 
+    justify-content: flex-end; 
+}
+
+/* 3. Fix the tiny bot avatar next to messages */
+.message-row.bot .chat-avatar { 
+    width: 32px; 
+    height: 32px; 
+    flex-shrink: 0; 
+    border: 1px solid #eee; 
+}
+
+/* 4. Restore the plush message bubble formatting */
+.chat-message { 
+    padding: 12px 16px; 
+    border-radius: 18px; 
+    max-width: 80%; 
+    line-height: 1.5; 
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 14px; 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05); 
+}
+
+.chat-message p {
+    margin: 0;
+}
+
+/* 5. Fix the Input Field Spacing */
+#chat-input { 
+    flex-grow: 1; 
+    border: 1px solid #ddd; 
+    border-radius: 25px; 
+    padding: 12px 18px; 
+    font-size: 14px; 
+    background-color: #f5f5f5; 
+    outline: none; 
+    transition: all 0.2s; 
+}
+
+#chat-input:focus { 
+    background-color: var(--white); 
+    border-color: var(--primary-color); 
+    box-shadow: 0 0 0 3px rgba(0, 128, 0, 0.1); 
+}
+/* =========================================================
+   LOCATION / MAP SECTION STYLES
+   ========================================================= */
+
+.location-section {
+    padding-bottom: 40px;
+}
+
+.map-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden; /* Keeps the rounded corners clean */
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-container:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.map-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover; /* Ensures the image fills the space beautifully */
+    display: block;
+}
+
+/* Green tint that fades in when you hover over the map */
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 128, 0, 0.7); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.map-container:hover .map-overlay {
+    opacity: 1;
+}
+
+.map-overlay svg {
+    width: 50px;
+    height: 50px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.map-overlay span {
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    font-weight: 600;
+    border: 2px solid white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    letter-spacing: 1px;
+}
