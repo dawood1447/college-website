@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Mumtaz College of Engineering and Technology</title>
+    <link rel="stylesheet" href="style.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="college.webp" alt="Mumtaz College Logo" class="header-logo" />
+            <h1>Mumtaz College</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Academics</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="gallery-page" class="content-section">
+            <h2>Photo Gallery</h2>
+            <p>Experience life at Mumtaz College. Explore our campus, labs, and vibrant student activities.</p>
+            
+            <div class="gallery-category">
+                <h3>Our Campus</h3>
+                <div class="gallery-grid">
+                    <img src="campus1.jpg" alt="Campus Photo 1">
+                    <img src="campus2.jpg" alt="Campus Photo 2">
+                    <img src="campus3.jpg" alt="Campus Photo 3">
+                    <img src="campus4.jpg" alt="Campus Photo 4">
+                    <img src="campus5.jpg" alt="Campus Photo 5">
+                    <img src="campus6.jpg" alt="Campus Photo 6">
+                </div>
+            </div>
+            
+            <div class="gallery-category">
+                <h3>Labs & Facilities</h3>
+                <div class="gallery-grid">
+                    <img src="lab1.jpg" alt="Lab Photo 1">
+                    <img src="lab2.jpg" alt="Lab Photo 2">
+                    <img src="lab3.jpg" alt="Lab Photo 3">
+                    <img src="lab4.jpg" alt="Lab Photo 4">
+                    <img src="lab5.jpg" alt="Lab Photo 5">
+                    <img src="lab6.jpg" alt="Lab Photo 6">
+                </div>
+            </div>
+
+            <div class="gallery-category">
+                <h3>Library</h3>
+                <div class="gallery-grid">
+                    <img src="library1.jpg" alt="Library Photo 1">
+                    <img src="library2.jpg" alt="Library Photo 2">
+                    <img src="library3.jpg" alt="Library Photo 3">
+                    <img src="library4.jpg" alt="Library Photo 4">
+                    <img src="library5.jpg" alt="Library Photo 5">
+                    <img src="library6.jpg" alt="Library Photo 6">
+                </div>
+            </div>
+            
+            <div class="gallery-category">
+                <h3>Cultural Events</h3>
+                <div class="gallery-grid">
+                    <img src="event1.jpg" alt="Event Photo 1">
+                    <img src="event2.jpg" alt="Event Photo 2">
+                    <img src="event3.jpg" alt="Event Photo 3">
+                    <img src="event4.jpg" alt="Event Photo 4">
+                    <img src="event5.jpg" alt="Event Photo 5">
+                    <img src="event6.jpg" alt="Event Photo 6">
+                </div>
+            </div>
+
+            <div class="gallery-category">
+                <h3>Sports Day</h3>
+                <div class="gallery-grid">
+                    <img src="sports-1.jpg" alt="Sports Day Action Shot 1">
+                    <img src="sports-2.jpg" alt="Sports Day Action Shot 2">
+                    <img src="sports-3.jpg" alt="Sports Day Action Shot 3">
+                    <img src="sports-4.jpg" alt="Sports Day Action Shot 4">
+                    <img src="sports-5.jpg" alt="Sports Day Action Shot 5">
+                    <img src="sports-6.jpg" alt="Sports Day Action Shot 6">
+                </div>
+            </div>
+
+            <div class="gallery-category">
+                <h3>Annual Hackathon</h3>
+                <div class="gallery-grid">
+                    <img src="hackothan-1.jpg" alt="Hackathon Coding 1">
+                    <img src="hackothan-2.jpg" alt="Hackathon Coding 2">
+                    <img src="hackothan-3.jpg" alt="Hackathon Coding 3">
+                    <img src="hackothan-4.jpg" alt="Hackathon Coding 4">
+                    <img src="hackothan-5.jpg" alt="Hackathon Coding 5">
+                    <img src="hackothan-6.jpg" alt="Hackathon Coding 6">
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Contact Us:</strong> mumtazcet@gmail.com | 78421 38122</p>
+        <p>&copy; 2025 Mumtaz College of Engineering and Technology. All rights reserved.</p>
+    </footer>
+
+    <div id="lightbox-modal">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-image">
+    </div>
+
+    <div id="chat-bubble">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+        </svg>
+    </div>
+    <div id="chat-welcome-bubble">Hi! Have a question?</div>
+    <div id="chat-window">
+        <div class="chat-header">
+            <div class="chat-avatar"></div>
+            <div class="chat-header-text"><h3>MCET Buddy</h3><p>Online | Here to help!</p></div>
+            <button id="close-chat" >&times;</button>
+        </div>
+        <div id="chat-body"></div>
+        <div class="quick-options">
+            <button data-question="admission">Admissions</button>
+            <button data-question="courses">Courses</button>
+            <button data-question="eligibility">Eligibility</button>
+            <button data-question="fees">Fees</button>
+            <button data-question="contact">Contact</button>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Ask a question..." />
+            <button id="send-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
