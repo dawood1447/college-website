@@ -5,26 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     const slides = document.querySelectorAll('.banner-slide');
     let currentSlideIndex = 0;
-    const slideIntervalTime = 4000; // Change image every 4 seconds
+    const slideIntervalTime = 4000; 
 
     function nextSlide() {
         if (slides.length > 0) {
-            // Remove 'previous' class from all slides
             slides.forEach(slide => slide.classList.remove('previous'));
-            
-            // Turn the currently active slide into the background 'previous' slide
             slides[currentSlideIndex].classList.remove('active');
             slides[currentSlideIndex].classList.add('previous');
-            
-            // Move to the next image in line
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            
-            // Fade the new image in on top
             slides[currentSlideIndex].classList.add('active');
         }
     }
 
-    // Start auto-timer for the banner
     if (slides.length > 0) {
         setInterval(nextSlide, slideIntervalTime);
     }
@@ -42,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const quickButtons = document.querySelectorAll(".quick-options button");
 
     // --- 3. Welcome Bubble Animation ---
-    // Show after 2 seconds, hide after 7 seconds
     setTimeout(() => { if(welcomeBubble) welcomeBubble.classList.add("visible"); }, 2000);
     setTimeout(() => { if(welcomeBubble) welcomeBubble.classList.remove("visible"); }, 7000);
 
@@ -93,14 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const userMessage = messageText || chatInput.value.trim();
         if (userMessage === "") return;
 
-        // Show User Message
         displayMessage(userMessage, "user");
         if (!messageText) chatInput.value = "";
 
-        // Show Typing Animation
         showTyping();
 
-        // Delay Response for realism
         setTimeout(() => {
             removeTyping();
             const botResponse = getBotResponse(userMessage);
@@ -124,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         row.appendChild(messageElement);
         chatBody.appendChild(row);
-        chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to bottom
+        chatBody.scrollTop = chatBody.scrollHeight; 
     }
 
     // --- 6. Typing Animation Functions ---
@@ -176,17 +164,22 @@ document.addEventListener("DOMContentLoaded", () => {
             return "Our <b>Sports Day</b> highlight includes Cricket, Football, Volleyball, Chess, and Carrom.";
         }
 
-        // -- FACULTY & ADMINISTRATION (UPDATED) --
+        // -- FACULTY & ADMINISTRATION --
         if (input.includes("principal") || input.includes("vice") || input.includes("coordinator") || input.includes("faculty") || input.includes("admin") || input.includes("sir") || input.includes("aziz") || input.includes("rakesh") || input.includes("majid")) {
             return "<b>Meet our Administration:</b><br>• <b>Principal (Engineering):</b> Dr. Azizuddin (+91 92473 41412)<br>• <b>Principal (Degree & Inter):</b> Dr. Rakesh (+91 73867 75942)<br>• <b>Coordinator:</b> Mr. Majid (+91 96401 96201)";
         }
 
-        // -- COLLEGE INFO (UPDATED) --
+        // -- COLLEGE INFO --
         if (input.includes("about") || input.includes("college info") || input.includes("founded") || input.includes("enrollment") || input.includes("student")) {
             return "Founded in <b>2008</b>, Mumtaz College is AICTE approved and affiliated with JNTU Hyderabad. Our enrollment is 40 students (2025).";
         }
         if (input.includes("location") || input.includes("where") || input.includes("address")) {
-            return "<b>Address:</b> Security Room, Mumtaz College, 2-737, Malakpet Rd, Hyderabad. <a href='https://www.google.com/maps/search/?api=1&query=17.368732240805393,78.50827290105367' target='_blank' style='color:blue;'>View on Map</a>";
+            return "<b>Address:</b> Security Room, Mumtaz College, 2-737, Malakpet Rd, Hyderabad. <a href='https://www.google.com/maps' target='_blank' style='color:blue;'>View on Map</a>";
+        }
+
+        // -- GENERAL COURSES --
+        if (input.includes("course") || input.includes("program") || input.includes("branch") || input.includes("academic")) {
+            return "We offer B.Tech programs in <b>CSE</b>, <b>AI & ML</b>, <b>IoT</b>, <b>ECE</b>, <b>Civil</b>, and an <b>MBA</b> program. Visit our <a href='courses.html' style='color:blue;'>Academics Page</a> or ask me about a specific branch like 'CSE'!";
         }
 
         // -- SPECIFIC COURSES --
@@ -197,7 +190,12 @@ document.addEventListener("DOMContentLoaded", () => {
             return "<b>B.Tech AI & ML:</b> 4 Years, 60 Seats.";
         }
 
-        // -- ADMISSIONS & ELIGIBILITY (2026 UPDATED) --
+        // -- ELIGIBILITY (NEW FIX!) --
+        if (input.includes("eligibility") || input.includes("eligible") || input.includes("criteria")) {
+            return "<b>B.Tech:</b> Passed 10+2 with PCM and a valid TS EAMCET rank.<br><br><b>MBA:</b> 3-year degree and a valid TS ICET rank. Check our <a href='admissions.html' style='color:blue;'>Admissions Page</a>.";
+        }
+
+        // -- ADMISSIONS --
         if (input.includes("admission") || input.includes("apply") || input.includes("process")) {
             return "Admissions use TS EAMCET (B.Tech) and TS ICET (MBA). Visit our <a href='admissions.html' style='color:blue;'>Admissions Page</a>.";
         }
@@ -210,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return "<b>Annual Fees:</b> B.Tech ₹45,000 | MBA ₹25,000.";
         }
 
-        // -- CONTACT & TIMINGS (UPDATED) --
+        // -- CONTACT & TIMINGS --
         if (input.includes("contact") || input.includes("phone") || input.includes("email") || input.includes("number") || input.includes("time") || input.includes("timing") || input.includes("hours")) {
             return "📞 <b>Phone:</b> 78421 38122<br>🕒 <b>Timings:</b> 9:00 AM to 3:30 PM";
         }
